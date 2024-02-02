@@ -25,7 +25,7 @@ class AlumnoController extends Controller
     
 
     //buscará un alumo por su matrícula
-    public function extractOne($matricula)
+    public function extractOneByMatricula($matricula)
     {
         $alumno = Alumno::find($matricula);
         return AlumnoDTO::fromAlumno($alumno);

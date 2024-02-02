@@ -1,9 +1,10 @@
 <?php
-namespace App\Http\DTOs;
 
-use App\Models\Role;
+namespace App\DTOs;
 
-class RoleDTO
+use App\Models\Permission;
+
+class PermissionDTO
 {
     public ?int $id;
     public string $name;
@@ -16,13 +17,13 @@ class RoleDTO
         $this->guard_name = $guard_name;
     }
 
-    public static function fromTipoRol(Role $rol)
+    public static function fromTipoPermiso(Permission $permission)
     {
-        return new self($rol->id, $rol->name, "");
+        return new self($permission->id, $permission->name, "");
     }
 
-    public static function getIDRol(Role $rol)
+    public static function getIdPermiso(Permission $permission)
     {
-        return $rol->id;
+        return $permission->id;
     }
 }
