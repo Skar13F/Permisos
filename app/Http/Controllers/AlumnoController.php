@@ -13,16 +13,21 @@ class AlumnoController extends Controller
     public function extract()
     {
         $alumnos = Alumno::all();
-        $alumnosDTO= collect();
+        $alumnosDTO = collect();
+    
         foreach ($alumnos as $alumno) {
-            $alumnosDTO->push(new AlumnoDTO($alumno));
+            $DTO = AlumnoDTO::fromAlumno($alumno);
+            $alumnosDTO->push($DTO);
         }
+    
         return $alumnosDTO;
     }
     
+
     //buscará un alumo por su matrícula
-    public function extractOne($matricula){
-        $alumno=Alumno::find($matricula);
-        return new AlumnoDTO($alumno);
+    public function extractOne($matricula)
+    {
+        $alumno = Alumno::find($matricula);
+        return AlumnoDTO::fromAlumno($alumno);
     }
 }
