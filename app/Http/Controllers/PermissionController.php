@@ -20,13 +20,13 @@ class PermissionController extends Controller
 
         return $permissionsDTO;
     }
-    public function extractOnebyId($id)
+    public static function extractOnebyId($id)
     {
         $permission = Permission::find($id);
         return PermissionDTO::fromTipoPermiso($permission);
     }
 
-    public function extractOnebyName($nombre)
+    public static function extractOnebyName($nombre)
     {
         $permission = Permission::where('name', $nombre)->first();
         return PermissionDTO::getIdPermiso($permission);

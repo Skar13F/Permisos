@@ -21,13 +21,13 @@ class RoleController extends Controller
         return $rolesDTO;
     }
 
-    public function extractOneById($id)
+    public static function extractOneById($id)
     {
         $rol = Role::find($id);
         return RoleDTO::fromTipoRol($rol);
     }
 
-    public function extractOneByName($nombre)
+    public static function extractOneByName($nombre)
     {
         $rol = Role::where('name', $nombre)->first();
         return RoleDTO::fromTipoRol($rol);
