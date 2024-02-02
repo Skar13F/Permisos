@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
+        'id_carrera',
+        'id_rol',
     ];
 
     /**
@@ -42,4 +44,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the carrera that the user belongs to.
+     */
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'id_carrera');
+    }
+
+    /**
+     * Get the rol that the user belongs to.
+     */
+    public function rol()
+    {
+        return $this->belongsTo(Role::class, 'id_rol');
+    }
 }
